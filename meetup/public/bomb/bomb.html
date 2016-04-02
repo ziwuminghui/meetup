@@ -1,0 +1,254 @@
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+  <style type='text/css'>
+    .maindiv {
+    	height: 500px;
+    	width: 500px;
+    	border:1px dashed #000
+    }
+
+
+    #playarea {
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+
+    .row { 
+    }
+
+    .normal, .bomb {
+	    float: left;
+	    border: 1px solid #000;
+	    width: 30px;
+	    height: 30px;
+	    line-height: 30px;
+	    text-align: center;
+	    background-position: center;
+	    margin: -1px 0 0 -1px;
+	    font-size: 12px;
+	    font-weight: bold;
+	    background-color: #00BFFF
+   }
+
+   .over {
+      background-color: red;
+   }
+
+   .focus{
+   	  background-color: #1E90FF;
+   }
+
+   .checked{
+   	  background-color: #FF7F50;
+   }
+
+   .clear{
+      background-color: white;
+   }
+  </style>
+</head>
+
+<body>
+  <div class = 'maindiv'>
+  	<div id = 'playarea'></div>
+  </div>
+  <button type = "button" id = "startgame">开始游戏</button>
+</body>
+
+
+
+<script type="text/javascript">
+var rows = 9; var cols = 9; //暂且定为9乘9
+var bombcount = 9;         //暂且定为10颗炸弹
+var bombarray = [];
+var size = 30;
+
+
+$(document).ready(function() {
+
+	$(document).bind("contextmenu", function (e) {
+	      return false;
+	 });
+});
+
+$("#startgame").click(function(){
+  creatediv();
+  setcss();
+});
+
+function creatediv() {  //建立游戏区域
+	createbomb();
+  var html = "";
+  for (var row = 1; row <= rows; row++) {
+  	html += "<div class=\"row\">";
+  	for (var col = 1; col <= cols; col++) {
+  	  var _id = row.toString() + "_" + col.toString();
+  	  if($.inArray(_id, bombarray) < 0) {
+  	  	html += "<div id = \"" + _id +"\" class=\"normal \"></div>";
+  	  }else{
+  	  	html += "<div id = \"" + _id +"\" class=\"bomb \"></div>";
+  	  }
+  	}
+  	html += "</div>";
+  }
+  $("#playarea").html(html);
+
+  $(".normal, .bomb").mouseover(function(){
+    $(this).addClass("focus");
+  });
+
+  $(".normal, .bomb").mouseout(function(){
+    $(this).removeClass("focus");
+  });
+
+  $(".bomb").click(function(){
+    if($(this).hasClass("checked")){
+      return;
+    }else{
+		  $(this).addClass("over");
+		  alert("这是一颗雷！！！游戏结束");
+		  setTimeout('location.reload()', 3000)
+    };
+	});
+
+  $(".normal, .bomb").mousedown(function(e){
+  	var div_id = $(this).attr("id");
+  	if(3 == e.which) {
+  		rightfunction(div_id);
+  	};
+  });
+
+  $(".normal").click(function(){
+    var div_id = $(this).attr("id")
+    leftfunction(div_id);
+  });
+ 
+};
+
+
+function createbomb() {  //创建随机的炸弹
+	for (var i = 1; i <= bombcount; i++) {
+		randombomb();
+	}
+}
+
+function randombomb() {
+	var bombid = parseInt(Math.random() * rows + 1).toString() + "_" + parseInt(Math.random() * cols + 1).toString();
+	if($.inArray(bombid, bombarray) >= 0) {
+		randombomb()
+	}else{
+		bombarray.push(bombid);
+	}
+}
+
+function setcss() {
+  var width = cols * (size + 1);
+  var height = rows * (size + 1);
+
+  $("#playarea").css({ "width": width + "px", "height": height + "px" });
+  $("#playarea row").css("width", width + "px");
+}
+
+function rightfunction(div_id) {
+	if($("#" + div_id).hasClass("checked")) {
+		if($("#" + div_id).hasClass("bomb")){
+			bombcount += 1;
+		}
+		$("#" + div_id).removeClass("checked");
+	}else{
+		$("#" + div_id).addClass("checked")
+		if($("#" + div_id).hasClass("bomb")){
+			bombcount = bombcount - 1;
+		  if( bombcount == 0) {
+			  alert("炸弹已经全部排除，恭喜你！");
+			  setTimeout('location.reload()', 3000);
+      }
+		}
+	}
+}
+
+function leftfunction(div_id) {
+  if ($("#" + div_id).hasClass("checked") || $("#" + div_id).hasClass("clear")) {
+    return;
+  };
+  $("#" + div_id).addClass("clear");
+  var around = aroundfunction(div_id);
+  var around_bomb_count = around[0][0];
+  var around_div_array = around[1];
+
+  if(around_bomb_count > 0 ) {
+    $("#" + div_id).html(around_bomb_count);
+  }else{
+    $.each(around_div_array, function (k, v) {
+      var xx = parseInt(v.split('_')[0]);
+      var yy = parseInt(v.split('_')[1]);
+      if (xx >= 1 && xx <= cols && yy >= 1 && yy <= rows) {
+        leftfunction(v)
+      };
+    });
+  } 
+}
+
+function aroundfunction(div_id) {
+  var x = parseInt(div_id.split('_')[0]);
+  var y = parseInt(div_id.split('_')[1]);
+  var return_val = [[],[]];
+  var around_bomb_val = 0;
+
+  var l1 = x.toString() + "_" + (y - 1).toString(); //左
+  if($("#" + l1).hasClass("bomb")) {
+    around_bomb_val += 1;
+  };
+  return_val[1].push(l1);
+  
+  var r1 = x.toString() + "_" + (y + 1).toString(); // 右
+  if($("#" + r1).hasClass("bomb")) {
+    around_bomb_val += 1;
+  };
+  return_val[1].push(r1);
+
+  var u1 = (x - 1).toString() + "_" + y.toString();// 上
+  if($("#" + u1).hasClass("bomb")) {
+    around_bomb_val += 1;
+  };
+  return_val[1].push(u1);
+
+  var d1 = (x + 1).toString() + "_" + y.toString();  // 下
+  if($("#" + d1).hasClass("bomb")) {
+    around_bomb_val += 1;
+  };
+  return_val[1].push(d1);
+
+  var lu1 = (x - 1).toString() + "_" + (y - 1).toString();  //左上
+  if($("#" + lu1).hasClass("bomb")) {
+    around_bomb_val += 1;
+  };
+  return_val[1].push(lu1);
+
+  var ru1 = (x - 1).toString() + "_" + (y + 1).toString();  // 右上
+  if($("#" + ru1).hasClass("bomb")) {
+    around_bomb_val += 1;
+  };
+  return_val[1].push(ru1);
+
+  var ld1 = (x + 1).toString() + "_" + (y - 1).toString();  // 左下
+  if($("#" + ld1).hasClass("bomb")) {
+    around_bomb_val += 1;
+  };
+  return_val[1].push(ld1);
+
+  var rd1 = (x + 1).toString() + "_" + (y + 1).toString(); // 右下
+  if($("#" + rd1).hasClass("bomb")) {
+    around_bomb_val += 1;
+  };
+  return_val[1].push(rd1);
+
+  return_val[0].push(around_bomb_val);
+
+  return return_val;
+}
+
+
+		
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>我的第一段 JavaScript</h1>
+
+<p id="demo" style="">
+JavaScript 能改变 HTML 元素的样式。
+</p>
+
+<script>
+function myFunction()
+{
+element=document.getElementById("demo");// 找到元素
+ if   (element.style.color.match(/255,\s0,\s0/)) {
+ 	element.style.color="";
+ 	alert("match1");
+ }
+ else{
+ 	element.style.color="#ff0000";
+ 	alert("match2");
+ }
+}
+</script>
+
+<button type="button" onclick="myFunction()">点击这里</button>
+
+</body>
+</html>

@@ -1,0 +1,272 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+h2 {
+	font-size: 28px;
+	color: #fff;
+}
+p {
+	font-size: 20px;
+	color: #fff;
+}
+a {
+	text-decoration: none;
+}
+nav {
+	background:#EFF4FA;
+	border-bottom: 1px solid #D6DFEA;
+	height: 42px;
+	line-height: 30px;
+	padding: 14px 22px 6px 40px;
+	font-size: 12px;
+	color:#B6B6B6;
+}
+footer {
+	border-top: 1px solid #D6DFEA;
+	background:#EFF4FA;
+	height: 36px;
+	width: 100%;
+	margin:  auto;
+	position:absolute;
+	bottom:18px;
+	text-align: center;
+}
+.underline {	
+	line-height: 30px;
+	color: #B6B6B6;
+	font-size: 12px;
+}
+.underline a{	
+	line-height: 12px;
+	color: #1D5494;
+	font-size: 12px;
+}
+.copy {
+	color: #868686;
+}
+nav ul {
+	list-style: none;
+	margin:0px;
+	padding: 0px;	
+	text-decoration: none;
+	text-transform: none;
+}
+footer ul {
+	list-style: none;
+	margin: 3px auto auto auto ;
+	padding: 0px;	
+	text-decoration: none;
+}
+nav ul li {
+	line-height: inherit;
+	padding-right: 2px;
+	text-decoration: none;
+	display: inline-block;
+}
+footer ul li {
+	padding-right: 2px;
+	text-decoration: none;
+	display: inline-block;
+}
+nav a {  
+	border: 0px;
+	color: #1D5494;
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+	margin-right: 1px;
+}
+nav a:hover {
+	text-decoration: underline;
+}
+footer a {  
+	border: 0px;
+	color: #1D5494;
+	text-decoration: none;
+	text-align: center;
+	display: inline-block;
+	margin-right: 1px;
+}
+nav .nav .logo {
+	padding: 0px;
+	margin: 0px;
+	float: left;
+	max-width: 30%
+}
+nav .nav .nav_left {
+	margin: 0px;
+	margin-left: 20px;
+	float: left;
+	max-width: 35%;
+}
+nav .nav .nav_right {
+	margin-top: 2px;
+	margin-right: 15px;
+	float: right;
+	max-width: 35%;
+}
+.content {
+	width: 100%;
+}
+.login-section{
+	width: 920px;
+	margin:72px auto;
+	text-align: center;
+}
+.login-left {
+	width: 520px;
+	float: left;
+	text-align: right;
+	padding-bottom: 0px;
+}
+.login-right {
+	width: 334px;
+	float: right;
+	border:1px solid;
+	border-color: #A0B1C4;
+	border-radius:5px;
+}
+#switch {
+	height: 18px;
+	padding: 16px 9px;
+	background-color: #F9FBFE;
+	text-align: left;
+	border-bottom:1px solid;
+	border-color: #A0B1C4;
+	position: relative;
+}
+#tab1 {
+	float: left;
+	width: 65px;
+	border:none;
+	margin-left: 44px;
+}
+#tab2 {
+	float: right;
+	width: 97px;
+	margin-right: 47px;
+}
+#switch hr {
+	color: #465767;
+	content: "";
+	position: absolute;
+	bottom: -9px;
+}
+#switch a {
+	text-decoration: none;
+	color: #888;
+}
+#switch a:hover {
+	color: #333;
+}
+#switch a.on{
+	color: #333;
+}
+.safe {
+	font-size: 14px;
+	font-weight: 800;
+	padding-left: 1px;
+	margin: 42px auto 9px auto;
+}
+#erweima {
+	width: 132px;
+	height: 132px;
+	margin:auto;
+	padding-right: 5px;
+}
+.tixing {
+	font-size: 12px;
+	color: #808080;
+	background-color:#F1F1F1;
+	width: 148px;
+	height: 28px;
+	padding-left:4px;
+	line-height: 26px;
+	margin: 11px auto 6px auto;
+	border-radius: 10px;
+}
+.last {
+	width: 100%;
+	margin: 41px auto;
+	padding: 10px auto;
+	line-height: 30px;
+	vertical-align: middle;
+}
+.last .underline {
+	float: right;
+	margin:1px 17px 10px 20px;
+}
+.last a{
+	margin: auto 8px auto 5px;
+}
+.form {
+	float: left;
+	margin:1px auto auto  22px;
+	font-size: 12px;
+	color: #000;
+}
+.form label {
+	padding-left: 2px;
+}
+.underline a:hover {
+	text-decoration: underline;
+}
+#con2 {
+	width: 279px;
+	margin: 36px auto 20px auto;
+}
+.username , .password,.username_focus , .password_focus{
+	width: 282px;
+	height: 38px;
+	margin: 10px auto auto -1px;
+	border:1px solid ;
+	border-radius: 2px;
+	position: relative;
+}
+.username,.password {
+	border-color: #96A5B4;
+}
+.username_focus , .password_focus {
+	border-color: #4892E7;
+}
+#con2 .input {
+	border:none;
+}
+.username label,.password label,.username_focus label, .password_focus label,#username_div .input,#password_div .input{
+	position: absolute;
+	padding: 10px 0px 10px 0px;
+	left: 12px;
+	font-size: 14px;
+}
+.username label,.password label {	
+	color: #AAA;
+}
+.username_focus label, .password_focus label{
+	color: #DDD;
+}
+.autologin {
+	margin: 11px auto 14px 0px;
+	text-align: left;
+	font-size: 12px;
+}
+.btn_login {
+	width: 100%;
+	height: 40px;
+	font-size: 18px;
+	line-height: 40px;
+	margin: 2px 0px auto 0px;
+	letter-spacing: 5px;
+	border: none;
+	background-color: #5A98DE;
+	color: #fff;
+	border-radius: 3px;
+}
+#con2 .underline {	
+	clear: both;
+	float: right;
+	margin:36px 0px 10px auto;
+}
+#con2 .underline a{	
+	margin:auto 8px auto 5px; 
+}

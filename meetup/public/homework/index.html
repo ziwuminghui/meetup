@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>meetup</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/common.css">
+	<script src="js/common.js"></script>
+</head>
+<body>
+	<nav>
+	<div class="nav">
+	<div class="logo">
+	<a href="/"><img src="image/maillogo.png"></a>
+	</div>
+	<div class="nav_right" >
+		<ul>
+			<li><a href="#">基本版</a></li>|
+			<li><a href="#">English</a></li>|
+			<li><a href="#">手机版</a></li>|
+			<li><a href="#">企业邮箱</a></li>
+		</ul>
+	</div>
+	</nav>
+	<div class="content">
+		<section class="login-section">
+		<div class="login-left">
+		<img src="image/login.jpg" alt="">
+		</div>
+		<div class="login-right">
+		<div id="switch">
+		<div id="tab1">
+		<a class="on" onclick="switchTab('tab1','con1');this.blur();return false;" href="#" >快速登录</a><br/>
+		</div>
+		<div id="tab2">
+		<a onclick="switchTab('tab2','con2');this.blur();return false;" href="#" >帐号密码登录</a><br/>
+		</div>
+		<hr/ id="hr_flow" style="left:55px;width:64px;">
+		</div>
+		<div id="con1">
+		<div class="safe">安全登录，防止被盗</div>
+		<div id="erweima">
+			<img src="image/erweima.jpg" alt="">
+		</div>
+		<a href="#">
+		<div class="tixing">使用QQ安全中心扫描登录</div>
+		</a>
+		<div class="last">
+			<div class="form">
+				<form action="#" method="get/post">
+					<input type="checkbox" name="savepassword" value="save" id="save"> 
+					<label for="save">下次自动登录</label> 
+				</form>
+			</div>
+			<div class="underline">
+				<a href="#">注册新帐号</a>|
+				<a href="#">意见反馈</a>
+			</div>
+		</div>
+		</div>
+		<div id="con2" style="display:none">
+			<form action="#" method="post">
+			<div class="username" id="username_div">			
+				<input type="text"name="username" id="username" class="input" value="" onfocus="focus_do('username_div','username_focus');" onblur="unfocus_do('username_div','username')" onkeydown="keysdown('label_username')" onkeyup="keysup('label_username')" >
+				<label id="label_username" for="username" display="block">支持QQ号/邮箱/手机号登录</label>
+				<br/>
+			</div>
+			<div class="password" id="password_div">
+				<input type="password" id="password" name="password" class="input" value=""onfocus="focus_do('password_div','password_focus');" onblur="unfocus_do('password_div','password')" onkeydown="keysdown('label_password')" onkeyup="keysup('label_password')">
+				<label id="label_password" for="password" display="block">密码</label>
+				<br/>
+			</div>
+				<div class="autologin">
+				<input type="checkbox" name="savepassword" value="save" id="save2"> 
+				<label for="save2">下次自动登录</label> <br/>
+				</div>
+				<button type="submit" value="登录"class="btn_login">登录</button>
+			</form>			
+			<div class="underline">
+				<a href="#">忘了密码？</a>|
+				<a href="#">注册新帐号</a>|
+				<a href="#">意见反馈</a>
+			</div>
+		</div>
+			
+		</div>
+		</section>
+	</div>
+
+
+	<footer class="underline">
+		<ul>
+			<li><a href="#">关于腾讯</a></li>|
+			<li><a href="#">服务条款</a></li>|
+			<li><a href="#">客服中心</a></li>|
+			<li><a href="#">联系我们</a></li>|
+			<li><a href="#">帮助中心</a></li>|
+			<span class="copy">©1998 - 2016 Tencent Inc. All Rights Reserved.</span>
+		</ul>
+	</footer>
+</body>
+</html>
